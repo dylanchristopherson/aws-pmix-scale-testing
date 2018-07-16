@@ -27,6 +27,7 @@ done
 set -x
 #cmd="/opt/openmpi/bin/mpirun -np $x --mca plm rsh --mca ras '^slurm' --mca btl tcp,vader,self --map-by node --host $nodelist /shared/test"
 cmd="/opt/openmpi/bin/mpirun -np $x --map-by node --host $nodelist /shared/test"
-eval $cmd |& /shared/memdata.py $runnum $rep $nnodes $ppn "$cmd"
+#eval $cmd |& /shared/memdata.py $runnum $rep $nnodes $ppn "$cmd"
+eval $cmd
 
 set +x

@@ -1,1 +1,1 @@
-../../query_db.sh
+/home/dylan/aws-pmix-scale-testing/query_db.sh

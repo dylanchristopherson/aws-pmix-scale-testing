@@ -35,6 +35,7 @@ def main():
     hostname = ''
     #sys.stdin is mpi_memprobe piped in
     for line in sys.stdin:
+        print line
 	if line.startswith("Sampling"):
 	    #split on whitespace, get last word
 	    operation = line.rsplit(None, 1)[-1]

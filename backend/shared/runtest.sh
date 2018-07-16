@@ -36,6 +36,7 @@ after=$(awk "/^now/ {print \$3; exit}" /proc/timer_list)
 numvals="$(bash /shared/query_db.sh "SELECT count(*) FROM data WHERE runnum=$runnum AND x=$x" "-N")"
 if [ $numvals -gt 0 ] ; then
     runtime=$((($after-$before)/1000000))
+    echo $runtime
 else
     runtime=-1
 fi

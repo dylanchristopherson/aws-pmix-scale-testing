@@ -11,7 +11,8 @@ for rep in $(seq 1 5); do
 	for ppn in $(seq  1 $computecores); do
 	    ntasks=$(($ppn*$numnodes))
 	    set -x
-	    ppn=$ppn runnum=$runnum rep=$rep sbatch -N $numnodes -n $ntasks /shared/memtest.sh
+	   # ppn=$ppn runnum=$runnum rep=$rep sbatch -N $numnodes -n $ntasks /shared/memtest.sh
+	    ppn=$ppn runnum=$runnum rep=$rep sbatch -N $numnodes -n $ntasks srun /shared/runtest.sh
 	    set +x
 	done
     done

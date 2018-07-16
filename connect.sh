@@ -11,9 +11,11 @@ get_cluster_info()
 # List clusters you can connect to and get user's choice
 list_clusters()
 {
+
     selection=-1
     # Loop until user inputs a valid cluster
     while [ $selection -lt 0 ]; do
+	  echo $info
 	  echo "Enter the number of the cluster to connect to:"
 	  # names is an array of the name of each cluster
 	  names=($(echo $info | jq -r .[].Name))
@@ -25,7 +27,7 @@ list_clusters()
 	  # Read in chosen cluster and validate it
 	  read -a selection
 	  if [ $selection -ge ${#names[@]} ]; then
-		 selection=-1
+         	 selection=-1
 	  fi
     done
 }

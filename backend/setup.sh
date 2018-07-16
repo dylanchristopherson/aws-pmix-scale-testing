@@ -47,8 +47,9 @@ upload()
     ompihash=$(ompi_info --parseable | awk "/ompi:version:repo:/" | awk -F'g' '{print $NF}') #grab everything after first occurrence of g
     tar_name=ompi-"$ompihash".tar.gz
     tar czf $tar_name /opt/openmpi
-    aws s3 cp $tar_name s3://$s3builds/$tar_name
-    aws s3 cp $tar_name s3://$s3builds/ompi_latest.tar.gz
+#Nearly out of S3 resources
+#    aws s3 cp $tar_name s3://$s3builds/$tar_name
+#    aws s3 cp $tar_name s3://$s3builds/ompi_latest.tar.gz
     echo "uploaded"
 }
 
@@ -111,7 +112,9 @@ create_cron()
 {
     echo "creating crontab"
     echo "runnum=$runnum" > /shared/cronvars
+    sudo -s
     crontab -u ec2-user /shared/crontab.txt
+    exit
     chmod +x /shared/shutdown.sh
     echo "done"
 }
